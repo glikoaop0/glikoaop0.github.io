@@ -1,1 +1,4 @@
 src/drafts/
+node_modules/
+dist/
+.astro/
