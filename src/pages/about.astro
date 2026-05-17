@@ -1,0 +1,122 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About — Y. Jemlaoui">
+  <div class="about-page">
+    <div class="about-header">
+      <div class="about-tag">About</div>
+      <h1>Yassine Jemlaoui</h1>
+    </div>
+
+    <div class="about-content">
+      <p>
+        SOC Analyst and Threat Hunter at <a href="https://i-tracing.com" target="_blank" rel="noopener">i-Tracing</a>,
+        an MSSP based in Paris. I work across AWS, Azure, and GCP environments,
+        focusing on detection engineering, cloud security, and Active Directory forensics.
+      </p>
+      <p>
+        This site is where I publish writeups, research notes, and field observations —
+        things I wish existed when I was working through a problem.
+      </p>
+
+      <h2>Stack</h2>
+      <p>
+        Different EDRs, SIEM
+      </p>
+
+      <h2>Focus areas</h2>
+      <ul>
+        <li>Detection engineering (Splunk SPL, Sigma rules)</li>
+        <li>Active Directory & Kerberos forensics</li>
+        <li>Cloud threat hunting (GCP, AWS, Azure)</li>
+        <li>CI/CD and supply chain security</li>
+        <li>Malware analysis (Go, PowerShell)</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        Find me on <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+        or <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .about-page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .about-tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .about-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 400;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-content p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content h2 {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    margin: 2.5rem 0 1rem;
+  }
+
+  .about-content ul {
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-content li {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+
+  .about-content a {
+    color: var(--accent);
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+  }
+
+  .about-content a:hover { color: var(--cream); }
+
+  @media (max-width: 640px) {
+    .about-page { padding: 3rem 1.5rem 5rem; }
+  }
+</style>

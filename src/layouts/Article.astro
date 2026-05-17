@@ -1,0 +1,185 @@
+---
+import Base from './Base.astro';
+
+const { frontmatter } = Astro.props;
+
+const date = new Date(frontmatter.date).toISOString().split('T')[0];
+
+// Rough reading time estimate
+const wordCount = frontmatter.rawContent?.split(/\s+/).length ?? 800;
+const readTime = Math.max(1, Math.round(wordCount / 200));
+---
+
+<Base title={`${frontmatter.title} — Y. Benali`} description={frontmatter.excerpt}>
+  <article class="article-page">
+
+    <a class="back-link" href="/">← All articles</a>
+
+    <h1>{frontmatter.title}</h1>
+
+    <div class="article-meta">
+      <span>{date}</span>
+      <span>·</span>
+      {frontmatter.tags && frontmatter.tags.map((tag: string) => (
+        <span class="tag">{tag}</span>
+      ))}
+      <span>·</span>
+      <span>{readTime} min read</span>
+    </div>
+
+    <div class="article-content">
+      <slot />
+    </div>
+
+  </article>
+</Base>
+
+<style>
+  .article-page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 4rem 2rem 8rem;
+    animation: fadeUp 0.7s 0.05s ease both;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s;
+  }
+
+  .back-link:hover { color: var(--accent); }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+  }
+
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    border: 1px solid var(--accent-dim);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+  }
+
+  /* ─── ARTICLE CONTENT STYLES ─────────────── */
+  .article-content :global(p) {
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+    color: var(--cream);
+  }
+
+  .article-content :global(h2) {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1rem;
+    color: var(--cream);
+  }
+
+  .article-content :global(h3) {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2rem 0 0.8rem;
+    color: var(--cream);
+  }
+
+  .article-content :global(code) {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    color: var(--accent);
+  }
+
+  .article-content :global(pre) {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .article-content :global(pre code) {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  .article-content :global(blockquote) {
+    border-left: 2px solid var(--accent);
+    padding-left: 1.2rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--cream-dim);
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content :global(li) {
+    line-height: 1.8;
+    margin-bottom: 0.4rem;
+    color: var(--cream);
+  }
+
+  .article-content :global(a) {
+    color: var(--accent);
+    text-underline-offset: 3px;
+  }
+
+  .article-content :global(a:hover) {
+    color: var(--cream);
+  }
+
+  .article-content :global(hr) {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  .article-content :global(img) {
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+</style>

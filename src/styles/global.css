@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:        #0e0e0d;
+  --bg-2:      #161614;
+  --cream:     #e8e0d0;
+  --cream-dim: #9a9185;
+  --accent:    #c8a96e;
+  --accent-dim:#7a6540;
+  --border:    #2a2925;
+  --mono:      'IBM Plex Mono', monospace;
+  --serif:     'Lora', Georgia, serif;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: var(--serif);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* ─── NAV ─────────────────────────────────── */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--cream); }
+
+/* ─── FOOTER ──────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer span,
+footer a {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--cream-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover { color: var(--accent); }
+
+.footer-links { display: flex; gap: 2rem; }
+
+/* ─── ANIMATIONS ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ──────────────────────────── */
+@media (max-width: 640px) {
+  nav        { padding: 1.5rem; }
+  footer     { padding: 1.5rem; flex-direction: column; gap: 0.8rem; text-align: center; }
+  .nav-links { gap: 1.5rem; }
+}
